@@ -211,6 +211,7 @@ Options:
           -a   (Update all)
           -wa  (Update all with wizard)
           -c   (ClearCache of PokemonGo)
+          -ec  (Extended cleaning)
           -pdc (Use /data/local/pdconf instead of $pdconf)
 EOF
 }
@@ -227,6 +228,7 @@ for i in "$@" ;do
  -a) update_rgc; update_pokemon; update_pogodroid; update_init ;;
  -wa) cast_alohomora; update_pokemon; cast_imperius; update_init ;;
  -c) echo "clearing cache of app pokemongo" && /system/bin/pm clear com.nianticlabs.pokemongo ;;
+ -ec) echo "performing externded cleaning" && /system/bin/rm -rf /sdcard/Android/data/com.nianticlabs.pokemongo/files/UnityCache/Shared /sdcard/Download/* /storage/emulated/0/Download/* /storage/emulated/0/gapps.zip ;;
  -pdc) pdconf=/data/local/pdconf ;;
   *) print_help ; exit 1 ;;
  esac
